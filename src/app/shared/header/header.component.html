@@ -1,0 +1,11 @@
+<mat-toolbar class="header" color="primary">
+  <span>Todo App</span>
+  <span class="header__spacer"></span>
+  <span *ngIf="currentUser$ | async as currentUser; else progressSpinner">
+    {{ currentUser.firstName + " " + currentUser.lastName }}
+  </span>
+</mat-toolbar>
+
+<ng-template #progressSpinner>
+  <mat-spinner [diameter]="50" color="accent"></mat-spinner>
+</ng-template>
