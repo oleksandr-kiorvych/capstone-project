@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { IUserSlice } from '../../utils/app-state.interface';
+import { IUserSlice } from '../../utils/interfaces/app-state.interface';
 import { AuthActions } from './auth.actions';
 
 export const initialState: IUserSlice = {

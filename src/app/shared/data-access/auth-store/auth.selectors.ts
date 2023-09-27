@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 
-import { IAppState } from '../../utils/app-state.interface';
+import { IAppState } from '../../utils/interfaces/app-state.interface';
 
 const currentUserSelector = (state: IAppState) => state.userSlice;
 

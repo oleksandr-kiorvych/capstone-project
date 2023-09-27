@@ -16,7 +16,7 @@ import {
   GetUserByIdService,
   initializeAppFactory,
 } from './core/factories/appInitialize.factory';
-import { PersistanceService } from './shared/data-access/persistance.service';
+import { PersistanceService } from './shared/utils/services/persistance.service';
 
 @NgModule({
   declarations: [AppComponent],

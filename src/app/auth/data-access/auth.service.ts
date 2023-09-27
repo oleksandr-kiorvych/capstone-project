@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { PersistanceService } from 'src/app/shared/data-access/persistance.service';
-import { IUser } from 'src/app/shared/utils/models/user.model';
+
 import { environment } from 'src/environments/environment.development';
+import { PersistanceService } from '../../shared/utils/services/persistance.service';
+import { IUser } from '../../shared/utils/models/user.model';
 
 @Injectable({
   providedIn: 'root',

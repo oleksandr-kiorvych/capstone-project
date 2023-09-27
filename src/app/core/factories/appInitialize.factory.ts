@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment.development';
 import { Router } from '@angular/router';
 
 import { IUser } from '../../shared/utils/models/user.model';
-import { PersistanceService } from '../../shared/data-access/persistance.service';
+import { PersistanceService } from '../../shared/utils/services/persistance.service';
 import { AuthActions } from '../../shared/data-access/auth-store/auth.actions';
 
 export function initializeAppFactory(
@@ -43,6 +43,7 @@ export function initializeAppFactory(
     );
 }
 
+//ideallly it would be token validation service
 @Injectable({ providedIn: 'root' })
 export class GetUserByIdService {
   constructor(private http: HttpClient) {}

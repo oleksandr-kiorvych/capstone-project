@@ -6,7 +6,7 @@ import { catchError, map, mergeMap, of, tap } from 'rxjs';
 
 import { AuthActions } from './auth.actions';
 import { IUser } from '../../utils/models/user.model';
-import { PersistanceService } from '../persistance.service';
+import { PersistanceService } from '../../utils/services/persistance.service';
 import { AuthService } from '../../../auth/data-access/auth.service';
 
 @Injectable({
