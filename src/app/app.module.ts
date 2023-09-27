@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './shared/header/header.component';
+import { HeaderComponent } from './shared/ui/header/header.component';
 import { authReducer } from './shared/data-access/auth-store/auth.reducer';
 import { AuthEffect } from './shared/data-access/auth-store/auth.effects';
 import {

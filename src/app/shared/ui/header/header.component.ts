@@ -5,8 +5,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { Store, select } from '@ngrx/store';
 
-import { selectCurrentUser } from '../data-access/auth-store/auth.selectors';
-import { IAppState } from '../utils/app-state.interface';
+import { selectCurrentUser } from '../../data-access/auth-store/auth.selectors';
+import { IAppState } from '../../utils/app-state.interface';
 
 @Component({
   selector: 'app-header',
