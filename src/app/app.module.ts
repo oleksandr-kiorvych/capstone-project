@@ -15,7 +15,7 @@ import { AuthEffect } from './shared/data-access/auth-store/auth.effects';
 import {
   GetUserByIdService,
   initializeAppFactory,
-} from './core/factories/appInitializ.factory';
+} from './core/factories/appInitialize.factory';
 import { PersistanceService } from './shared/data-access/persistance.service';
 
 @NgModule({
