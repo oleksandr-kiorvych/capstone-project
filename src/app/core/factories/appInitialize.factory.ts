@@ -1,5 +1,5 @@
 import { Store } from '@ngrx/store';
-import { Observable, of, tap } from 'rxjs';
+import { Observable, first, of, tap } from 'rxjs';
 import jwtDecode from 'jwt-decode';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -30,6 +30,7 @@ export function initializeAppFactory(
 
   return () =>
     getUserByIdService.getUserById(userData.id).pipe(
+      first(),
       tap((user) => {
         store.dispatch(
           AuthActions.login({

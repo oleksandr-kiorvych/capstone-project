@@ -17,6 +17,8 @@ import {
   initializeAppFactory,
 } from './core/factories/appInitialize.factory';
 import { PersistanceService } from './shared/utils/services/persistance.service';
+import { todosReducer } from './todos/data-access/todo-store/todos.reducer';
+import { TodosEffect } from './todos/data-access/todo-store/todos.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,9 +27,9 @@ import { PersistanceService } from './shared/utils/services/persistance.service'
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({ userSlice: authReducer }),
+    StoreModule.forRoot({ userSlice: authReducer, todosSlice: todosReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    EffectsModule.forRoot([AuthEffect]),
+    EffectsModule.forRoot([AuthEffect, TodosEffect]),
     HeaderComponent,
   ],
   providers: [

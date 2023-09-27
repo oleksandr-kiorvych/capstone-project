@@ -1,0 +1,6 @@
+<div *ngIf="currentUserTodos$ | async as currentUserTodos">
+  <app-todo-card
+    *ngFor="let todo of currentUserTodos; trackBy: trackByTodos"
+    [todo]="todo"
+  ></app-todo-card>
+</div>

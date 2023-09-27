@@ -16,7 +16,6 @@ export class AuthService {
   ) {}
 
   public login(username: string, password: string): Observable<IUser> {
-    console.log('asdas');
     return this.http.post<IUser>(`${environment.API_URL}/auth/login`, {
       username,
       password,

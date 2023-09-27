@@ -1,11 +1,20 @@
+import { ITodo } from '../models/todo.model';
 import { IUser } from '../models/user.model';
 
-export interface IUserSlice {
+interface IBaseSlice {
   isLoading: boolean;
+  error: any | null;
+}
+
+export interface IUserSlice extends IBaseSlice {
   currentUser: IUser | null;
-  error: never | null;
+}
+
+export interface ITodosSlice extends IBaseSlice {
+  todos: ITodo[];
 }
 
 export interface IAppState {
   userSlice: IUserSlice;
+  todosSlice: ITodosSlice;
 }

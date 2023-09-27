@@ -3,9 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: 'todos',
+    loadComponent: () =>
+      import('./todos/feature/todo-list/todo-list.component').then(
+        (c) => c.TodoListComponent
+      ),
+  },
+  {
     path: 'auth',
     loadComponent: () =>
-      import('./auth/feature/auth/auth.component').then((c) => c.AuthComponent),
+      import('./auth/feature/login/login.component').then(
+        (c) => c.LoginComponent
+      ),
   },
 ];
 

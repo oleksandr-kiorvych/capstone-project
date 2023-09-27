@@ -24,11 +24,11 @@ import { AuthActions } from 'src/app/shared/data-access/auth-store/auth.actions'
     MatButtonModule,
     ReactiveFormsModule,
   ],
-  templateUrl: './auth.component.html',
-  styleUrls: ['./auth.component.scss'],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AuthComponent {
+export class LoginComponent {
   public authForm = this.fb.nonNullable.group({
     username: ['', [Validators.required]],
     password: ['', [Validators.required, Validators.minLength(5)]],

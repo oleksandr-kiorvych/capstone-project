@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap, of, tap } from 'rxjs';
+import { catchError, map, mergeMap, of, take, tap } from 'rxjs';
 
 import { AuthActions } from './auth.actions';
 import { IUser } from '../../utils/models/user.model';
@@ -37,7 +37,9 @@ export class AuthEffect {
       this.actions$.pipe(
         ofType(AuthActions.login_success),
         tap(() => {
-          this.router.navigateByUrl('/');
+          if (this.router.url.includes('auth')) {
+            this.router.navigateByUrl('/todos');
+          }
         })
       ),
     { dispatch: false }

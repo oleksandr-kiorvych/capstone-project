@@ -12,8 +12,10 @@ export class TodosService {
   constructor(private http: HttpClient) {}
 
   //ideally we would get user todos by setting token in headers, but API does not allow it, so we use userId
-  public getCurrentUserTodos(userId: number): Observable<ITodo[]> {
-    return this.http.get<ITodo[]>(`${environment.API_URL}/todos/${userId}`);
+  public getCurrentUserTodos(userId: number): Observable<{ todos: ITodo[] }> {
+    return this.http.get<{ todos: ITodo[] }>(
+      `${environment.API_URL}/todos/user/${userId}`
+    );
   }
 
   //deleting todo won't delete it on server, this is mocking
