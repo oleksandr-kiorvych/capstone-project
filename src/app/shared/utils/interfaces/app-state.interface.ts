@@ -3,7 +3,7 @@ import { IUser } from '../models/user.model';
 
 interface IBaseSlice {
   isLoading: boolean;
-  error: any | null;
+  error: string | null;
 }
 
 export interface IUserSlice extends IBaseSlice {

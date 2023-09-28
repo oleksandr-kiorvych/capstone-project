@@ -10,18 +10,18 @@ export const TodosActions = createActionGroup({
   events: {
     get_todos: props<{ userId: number }>(),
     get_todos_success: props<{ todos: ITodo[] }>(),
-    get_todos_error: props<{ error: any }>(),
+    get_todos_error: props<{ error: string }>(),
 
     add_todo: props<{ todo: TAddTodoRequest }>(),
     add_todo_success: props<{ todo: ITodo }>(),
-    add_todo_error: props<{ error: any }>(),
+    add_todo_error: props<{ error: string }>(),
 
     edit_todo: props<{ todo: ITodo }>(),
     edit_todo_success: props<{ todo: ITodo }>(),
-    edit_todo_error: props<{ error: any }>(),
+    edit_todo_error: props<{ error: string }>(),
 
     delete_todo: props<{ todoId: number }>(),
     delete_todo_success: props<{ todo: ITodo }>(),
-    delete_todo_error: props<{ error: any }>(),
+    delete_todo_error: props<{ error: string }>(),
   },
 });

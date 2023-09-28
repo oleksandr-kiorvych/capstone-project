@@ -47,11 +47,6 @@ export class LoginComponent {
   public onSubmit() {
     if (this.authForm.invalid) return;
 
-    console.log({
-      username: this.username.value,
-      password: this.password.value,
-    });
-
     this.store.dispatch(
       AuthActions.login({
         username: this.username.value,

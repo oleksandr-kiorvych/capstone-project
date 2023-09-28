@@ -28,5 +28,25 @@ export class TodosEffect {
     );
   });
 
+  deleteTodo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TodosActions.delete_todo),
+      mergeMap(({ todoId }) =>
+        this.todosService.deleteTodo(todoId).pipe(
+          map((todo) =>
+            TodosActions.delete_todo_success({
+              todo,
+            })
+          ),
+          catchError((errorRes: HttpErrorResponse) =>
+            of(
+              TodosActions.delete_todo_error({ error: errorRes.error?.message })
+            )
+          )
+        )
+      )
+    );
+  });
+
   constructor(private actions$: Actions, private todosService: TodosService) {}
 }

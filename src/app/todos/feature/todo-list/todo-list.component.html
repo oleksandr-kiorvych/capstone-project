@@ -1,6 +1,16 @@
-<div *ngIf="currentUserTodos$ | async as currentUserTodos">
+<button
+  mat-icon-button
+  color="primary"
+  matTooltip="Basic"
+  (click)="openAddTodoDialog()"
+>
+  <mat-icon>add</mat-icon>
+</button>
+<div class="todo-list" *ngIf="currentUserTodos$ | async as currentUserTodos">
   <app-todo-card
     *ngFor="let todo of currentUserTodos; trackBy: trackByTodos"
+    class="todo-card"
     [todo]="todo"
+    (deleteEvent)="deleteTodo(todo.id)"
   ></app-todo-card>
 </div>

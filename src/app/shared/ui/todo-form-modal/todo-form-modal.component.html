@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-content>
+    <mat-card-title>{{
+      data.type === "Add" ? "Add Todo" : "Edit Todo"
+    }}</mat-card-title>
+
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <textarea matInput></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Status</mat-label>
+      <mat-select>
+        <mat-option value="true">Completed</mat-option>
+        <mat-option value="false">Not Completed</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>

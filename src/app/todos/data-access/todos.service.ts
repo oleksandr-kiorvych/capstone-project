@@ -19,8 +19,8 @@ export class TodosService {
   }
 
   //deleting todo won't delete it on server, this is mocking
-  public deleteTodo(todoId: number): Observable<void> {
-    return this.http.delete<void>(`${environment.API_URL}/todo/${todoId}`);
+  public deleteTodo(todoId: number): Observable<ITodo> {
+    return this.http.delete<ITodo>(`${environment.API_URL}/todo/${todoId}`);
   }
 
   // adding todo won't add it to server, just return new todo with an ID
