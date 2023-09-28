@@ -1,7 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { todoResolver } from './todos/utils/todo.resolver';
 
 const routes: Routes = [
+  {
+    path: 'todos/:todoId',
+    resolve: { todo: todoResolver },
+    loadComponent: () =>
+      import('./todos/feature/todo/todo.component').then(
+        (c) => c.TodoComponent
+      ),
+  },
   {
     path: 'todos',
     loadComponent: () =>

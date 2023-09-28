@@ -79,5 +79,21 @@ export const todosReducer = createReducer(
     ...state,
     isLoading: false,
     error: error,
+  })),
+  on(TodosActions.get_single_todo, (state) => ({
+    ...state,
+    isLoading: true,
+    error: null,
+  })),
+  on(TodosActions.get_single_todo_success, (state, { todo }) => ({
+    ...state,
+    todos: [...state.todos, todo],
+    isLoading: false,
+    error: null,
+  })),
+  on(TodosActions.get_single_todo_failure, (state, { error }) => ({
+    ...state,
+    isLoading: true,
+    error: error,
   }))
 );

@@ -12,5 +12,6 @@
     class="todo-card"
     [todo]="todo"
     (deleteEvent)="deleteTodo(todo.id)"
+    (openTodoEvent)="openTodo($event)"
   ></app-todo-card>
 </div>

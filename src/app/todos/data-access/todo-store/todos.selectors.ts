@@ -8,3 +8,8 @@ export const selectCurrentTodos = createSelector(
   currentTodosSelector,
   (state) => state.todos
 );
+
+export const selectSingleTodo = (todoId: number) =>
+  createSelector(currentTodosSelector, (state) =>
+    state.todos.find((todo) => todo.id === todoId)
+  );

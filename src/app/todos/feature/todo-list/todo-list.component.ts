@@ -12,8 +12,12 @@ import { selectCurrentTodos } from '../../data-access/todo-store/todos.selectors
 import { TodoCardComponent } from '../../ui/todo-card/todo-card.component';
 import { selectCurrentUser } from '../../../shared/data-access/auth-store/auth.selectors';
 import { IAppState } from '../../../shared/utils/interfaces/app-state.interface';
-import { ITodo } from '../../../shared/utils/models/todo.model';
+import {
+  ITodo,
+  TAddTodoRequest,
+} from '../../../shared/utils/models/todo.model';
 import { TodoFormModalComponent } from '../../../shared/ui/todo-form-modal/todo-form-modal.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -40,20 +44,37 @@ export class TodoListComponent {
     switchMap(() => this.store.pipe(select(selectCurrentTodos)))
   );
 
-  constructor(private store: Store<IAppState>, private dialogRef: Dialog) {}
+  constructor(
+    private store: Store<IAppState>,
+    private dialog: Dialog,
+    private router: Router
+  ) {}
+
+  public openAddTodoDialog() {
+    const dialogRef = this.dialog.open<TAddTodoRequest>(
+      TodoFormModalComponent,
+      {
+        maxWidth: 500,
+        width: '100%',
+        data: {
+          type: 'Add',
+        },
+      }
+    );
+
+    // no need to unsubscribe, observable completes itself
+    dialogRef.closed.subscribe((todo) => {
+      if (!todo) return;
+      this.store.dispatch(TodosActions.add_todo({ todo }));
+    });
+  }
+
+  public openTodo(todoId: number) {
+    this.router.navigate(['/todos', todoId]);
+  }
 
   public deleteTodo(todoId: number) {
     this.store.dispatch(TodosActions.delete_todo({ todoId }));
-  }
-
-  public openAddTodoDialog() {
-    this.dialogRef.open(TodoFormModalComponent, {
-      maxWidth: 500,
-      width: '100%',
-      data: {
-        type: 'Add',
-      },
-    });
   }
 
   public trackByTodos(index: number, todo: ITodo) {

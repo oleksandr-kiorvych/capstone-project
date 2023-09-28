@@ -23,5 +23,9 @@ export const TodosActions = createActionGroup({
     delete_todo: props<{ todoId: number }>(),
     delete_todo_success: props<{ todo: ITodo }>(),
     delete_todo_error: props<{ error: string }>(),
+
+    get_single_todo: props<{ todoId: number }>(),
+    get_single_todo_success: props<{ todo: ITodo }>(),
+    get_single_todo_failure: props<{ error: string }>(),
   },
 });

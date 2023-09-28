@@ -5,4 +5,4 @@ export interface ITodo {
   userId: number;
 }
 
-export type TAddTodoRequest = Pick<ITodo, 'todo' | 'userId' | 'completed'>;
+export type TAddTodoRequest = Pick<ITodo, 'todo' | 'completed'>;

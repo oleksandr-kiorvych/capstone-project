@@ -4,16 +4,40 @@
       data.type === "Add" ? "Add Todo" : "Edit Todo"
     }}</mat-card-title>
 
-    <mat-form-field>
-      <mat-label>Description</mat-label>
-      <textarea matInput></textarea>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Status</mat-label>
-      <mat-select>
-        <mat-option value="true">Completed</mat-option>
-        <mat-option value="false">Not Completed</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <form [formGroup]="todoForm" (ngSubmit)="submitForm()">
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          required
+          name="todo"
+          formControlName="todo"
+        ></textarea>
+        <mat-error *ngIf="todo.hasError('required') && todo.touched">
+          Field is required
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select name="completed" formControlName="completed">
+          <mat-option [value]="true">Completed</mat-option>
+          <mat-option [value]="false">Not Completed</mat-option>
+        </mat-select>
+        <mat-error *ngIf="completed.hasError('required') && completed.touched">
+          Field is required
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">
+        {{ data.type === "Add" ? "Add" : "Edit" }}
+      </button>
+      <button
+        mat-raised-button
+        color="accent"
+        class="discard-btn"
+        (click)="discardDialog()"
+      >
+        Discard
+      </button>
+    </form>
   </mat-card-content>
 </mat-card>

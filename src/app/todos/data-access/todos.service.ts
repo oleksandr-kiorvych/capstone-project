@@ -18,13 +18,20 @@ export class TodosService {
     );
   }
 
+  public getSingleTodo(todoId: number): Observable<ITodo> {
+    return this.http.get<ITodo>(`${environment.API_URL}/todos/${todoId}`);
+  }
+
   //deleting todo won't delete it on server, this is mocking
   public deleteTodo(todoId: number): Observable<ITodo> {
     return this.http.delete<ITodo>(`${environment.API_URL}/todo/${todoId}`);
   }
 
   // adding todo won't add it to server, just return new todo with an ID
-  public addTodo(todo: TAddTodoRequest): Observable<ITodo> {
+  // therefore it's not possible to delete or edit current todo
+  public addTodo(
+    todo: TAddTodoRequest & { userId: number }
+  ): Observable<ITodo> {
     return this.http.post<ITodo>(`${environment.API_URL}/todos/add`, todo);
   }
 

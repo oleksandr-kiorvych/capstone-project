@@ -22,9 +22,15 @@ import { ITodo } from '../../../shared/utils/models/todo.model';
 })
 export class TodoCardComponent {
   @Output() deleteEvent = new EventEmitter<Event>();
-  @Input() todo: ITodo | undefined;
+  @Output() openTodoEvent = new EventEmitter<number>();
+
+  @Input() todo!: ITodo;
 
   public deleteTodo(e: Event) {
     this.deleteEvent.emit(e);
+  }
+
+  public openTodo(todoId: number | undefined) {
+    this.openTodoEvent.emit(todoId);
   }
 }
