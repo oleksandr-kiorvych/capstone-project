@@ -10,8 +10,7 @@ import { Router } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/ui/header/header.component';
-import { authReducer } from './shared/data-access/auth-store/auth.reducer';
-import { AuthEffect } from './shared/data-access/auth-store/auth.effects';
+import { AuthEffect } from './auth/data-access/store/auth.effects';
 import {
   GetUserByIdService,
   initializeAppFactory,
@@ -19,6 +18,7 @@ import {
 import { PersistanceService } from './shared/utils/services/persistance.service';
 import { todosReducer } from './todos/data-access/todo-store/todos.reducer';
 import { TodosEffect } from './todos/data-access/todo-store/todos.effects';
+import { authReducer } from './auth/data-access/store/auth.reducer';
 
 @NgModule({
   declarations: [AppComponent],

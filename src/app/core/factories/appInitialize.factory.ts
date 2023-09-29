@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 import { IUser } from '../../shared/utils/models/user.model';
 import { PersistanceService } from '../../shared/utils/services/persistance.service';
-import { AuthActions } from '../../shared/data-access/auth-store/auth.actions';
+import { AuthActions } from '../../auth/data-access/store/auth.actions';
 
 export function initializeAppFactory(
   getUserByIdService: GetUserByIdService,

@@ -8,9 +8,9 @@ import { Dialog, DialogModule } from '@angular/cdk/dialog';
 import { EMPTY, switchMap, tap } from 'rxjs';
 
 import { TodosActions } from '../../data-access/todo-store/todos.actions';
-import { selectCurrentTodos } from '../../data-access/todo-store/todos.selectors';
+import { selectCurrentTodos } from '../../../shared/data-access/selectors/todos.selectors';
 import { TodoCardComponent } from '../../ui/todo-card/todo-card.component';
-import { selectCurrentUser } from '../../../shared/data-access/auth-store/auth.selectors';
+import { selectCurrentUser } from '../../../shared/data-access/selectors/auth.selectors';
 import { IAppState } from '../../../shared/utils/interfaces/app-state.interface';
 import {
   ITodo,

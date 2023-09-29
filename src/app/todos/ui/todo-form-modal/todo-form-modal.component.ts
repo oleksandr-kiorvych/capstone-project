@@ -16,10 +16,7 @@ import {
 } from '@angular/forms';
 
 import { TodoFormType } from '../../../shared/utils/types/todo-form.type';
-import {
-  ITodo,
-  TAddTodoRequest,
-} from '../../../shared/utils/models/todo.model';
+import { ITodo } from '../../../shared/utils/models/todo.model';
 
 @Component({
   selector: 'app-todo-form-modal',

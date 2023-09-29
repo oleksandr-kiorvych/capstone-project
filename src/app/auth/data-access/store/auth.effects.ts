@@ -5,9 +5,9 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, mergeMap, of, take, tap } from 'rxjs';
 
 import { AuthActions } from './auth.actions';
-import { IUser } from '../../utils/models/user.model';
-import { PersistanceService } from '../../utils/services/persistance.service';
-import { AuthService } from '../../../auth/data-access/auth.service';
+import { IUser } from '../../../shared/utils/models/user.model';
+import { PersistanceService } from '../../../shared/utils/services/persistance.service';
+import { AuthService } from '../auth.service';
 
 @Injectable({
   providedIn: 'root',

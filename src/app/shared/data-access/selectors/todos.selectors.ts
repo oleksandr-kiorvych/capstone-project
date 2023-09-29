@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
 
-import { IAppState } from '../../../shared/utils/interfaces/app-state.interface';
+import { IAppState } from '../../utils/interfaces/app-state.interface';
 
 const currentTodosSelector = (state: IAppState) => state.todosSlice;
 

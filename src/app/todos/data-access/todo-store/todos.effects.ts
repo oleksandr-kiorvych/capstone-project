@@ -6,7 +6,7 @@ import { Store, select } from '@ngrx/store';
 
 import { TodosActions } from './todos.actions';
 import { TodosService } from '../todos.service';
-import { selectCurrentUser } from '../../../shared/data-access/auth-store/auth.selectors';
+import { selectCurrentUser } from '../../../shared/data-access/selectors/auth.selectors';
 import { IAppState } from '../../../shared/utils/interfaces/app-state.interface';
 
 @Injectable({

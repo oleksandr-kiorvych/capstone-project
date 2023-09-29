@@ -7,13 +7,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
 
-import { selectSingleTodo } from '../../data-access/todo-store/todos.selectors';
+import { selectSingleTodo } from '../../../shared/data-access/selectors/todos.selectors';
 import { TodosActions } from '../../data-access/todo-store/todos.actions';
 import { IAppState } from '../../../shared/utils/interfaces/app-state.interface';
-import {
-  ITodo,
-  TAddTodoRequest,
-} from '../../../shared/utils/models/todo.model';
+import { ITodo } from '../../../shared/utils/models/todo.model';
 import { TodoFormModalComponent } from '../../../todos/ui/todo-form-modal/todo-form-modal.component';
 
 @Component({
@@ -55,7 +52,6 @@ export class TodoComponent {
     // no need to unsubscribe, observable completes itself
     dialogRef.closed.subscribe((todo) => {
       if (!todo) return;
-      console.log(todo);
       this.store.dispatch(TodosActions.edit_todo({ todo }));
     });
   }

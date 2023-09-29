@@ -11,7 +11,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { AuthActions } from 'src/app/shared/data-access/auth-store/auth.actions';
+import { AuthActions } from '../../data-access/store/auth.actions';
 
 @Component({
   selector: 'app-auth',

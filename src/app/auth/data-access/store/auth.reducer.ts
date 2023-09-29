@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { IUserSlice } from '../../utils/interfaces/app-state.interface';
 import { AuthActions } from './auth.actions';
+import { IUserSlice } from '../../../shared/utils/interfaces/app-state.interface';
 
 export const initialState: IUserSlice = {
   isLoading: false,

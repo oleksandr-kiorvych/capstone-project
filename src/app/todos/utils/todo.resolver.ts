@@ -3,7 +3,7 @@ import { ResolveFn, Router } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { first, of, switchMap } from 'rxjs';
 
-import { selectCurrentTodos } from '../data-access/todo-store/todos.selectors';
+import { selectCurrentTodos } from '../../shared/data-access/selectors/todos.selectors';
 import { TodosActions } from '../data-access/todo-store/todos.actions';
 import { IAppState } from '../../shared/utils/interfaces/app-state.interface';
 import { decodeToken } from '../../shared/utils/funcs/decode-token.func';
