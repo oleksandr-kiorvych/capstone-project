@@ -1,11 +1,15 @@
 <mat-toolbar class="header" color="primary">
   <span>Todo App</span>
   <span class="header__spacer"></span>
-  <span *ngIf="currentUser$ | async as currentUser; else progressSpinner">
-    {{ currentUser.firstName + " " + currentUser.lastName }}
-  </span>
+  <ng-container *ngIf="currentUser$ | async as currentUser">
+    <span>
+      {{ currentUser.firstName + " " + currentUser.lastName }}
+    </span>
+    <button mat-stroked-button (click)="logOut()">Log Out</button>
+  </ng-container>
+  <mat-spinner
+    *ngIf="isLoadingUser$ | async"
+    [diameter]="50"
+    color="accent"
+  ></mat-spinner>
 </mat-toolbar>
-
-<ng-template #progressSpinner>
-  <mat-spinner [diameter]="50" color="accent"></mat-spinner>
-</ng-template>

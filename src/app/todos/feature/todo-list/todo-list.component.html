@@ -7,6 +7,7 @@
   <mat-icon>add</mat-icon>
 </button>
 <div class="todo-list" *ngIf="currentUserTodos$ | async as currentUserTodos">
+  <h2 *ngIf="!currentUserTodos.length">No todos currently</h2>
   <app-todo-card
     *ngFor="let todo of currentUserTodos; trackBy: trackByTodos"
     class="todo-card"

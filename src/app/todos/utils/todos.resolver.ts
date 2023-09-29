@@ -16,7 +16,7 @@ export const todosResolver: ResolveFn<ITodo[]> = (route, state) => {
     first(),
     switchMap((todos) => {
       if (!todos.length) {
-        store.dispatch(TodosActions.get_todos({}));
+        store.dispatch(TodosActions.get_todos());
       }
       return of([]);
     })

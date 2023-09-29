@@ -32,6 +32,18 @@ export class AuthEffect {
     );
   });
 
+  logout$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(AuthActions.logout),
+        tap(() => {
+          this.persistanceService.delete('accessToken');
+          this.router.navigate(['auth']);
+        })
+      ),
+    { dispatch: false }
+  );
+
   redirectAfterSubmit$ = createEffect(
     () =>
       this.actions$.pipe(

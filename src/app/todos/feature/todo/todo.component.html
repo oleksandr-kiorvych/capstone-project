@@ -1,10 +1,8 @@
 <section class="todo">
-  <button
-    mat-icon-button
-    color="primary"
-    matTooltip="Basic"
-    (click)="openEditTodoDialog()"
-  >
+  <button mat-icon-button color="accent" (click)="redirectToTodos()">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <button mat-icon-button color="primary" (click)="openEditTodoDialog()">
     <mat-icon>edit</mat-icon>
   </button>
   <mat-card class="example-card" *ngIf="todo$ | async as todo">

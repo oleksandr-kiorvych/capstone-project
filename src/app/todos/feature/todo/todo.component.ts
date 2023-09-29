@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store, select } from '@ngrx/store';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
@@ -35,7 +35,8 @@ export class TodoComponent {
   constructor(
     private store: Store<IAppState>,
     private route: ActivatedRoute,
-    private dialog: Dialog
+    private dialog: Dialog,
+    private router: Router
   ) {}
 
   public openEditTodoDialog() {
@@ -54,5 +55,9 @@ export class TodoComponent {
       if (!todo) return;
       this.store.dispatch(TodosActions.edit_todo({ todo }));
     });
+  }
+
+  public redirectToTodos() {
+    this.router.navigate(['todos']);
   }
 }
