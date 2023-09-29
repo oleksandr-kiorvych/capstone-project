@@ -8,7 +8,7 @@ import {
 export const TodosActions = createActionGroup({
   source: 'todos',
   events: {
-    get_todos: props<{ userId: number }>(),
+    get_todos: props<{ userId?: number }>(),
     get_todos_success: props<{ todos: ITodo[] }>(),
     get_todos_error: props<{ error: string }>(),
 

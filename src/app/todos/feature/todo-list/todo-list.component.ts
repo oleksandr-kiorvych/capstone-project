@@ -4,6 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Dialog, DialogModule } from '@angular/cdk/dialog';
+import { Router } from '@angular/router';
 
 import { EMPTY, switchMap, tap } from 'rxjs';
 
@@ -17,7 +18,6 @@ import {
   TAddTodoRequest,
 } from '../../../shared/utils/models/todo.model';
 import { TodoFormModalComponent } from '../../ui/todo-form-modal/todo-form-modal.component';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-list',
@@ -34,15 +34,7 @@ import { Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoListComponent {
-  public currentUserTodos$ = this.store.select(selectCurrentUser).pipe(
-    tap((currentUser) => {
-      if (!currentUser) return EMPTY;
-      return this.store.dispatch(
-        TodosActions.get_todos({ userId: currentUser.id })
-      );
-    }),
-    switchMap(() => this.store.pipe(select(selectCurrentTodos)))
-  );
+  public currentUserTodos$ = this.store.pipe(select(selectCurrentTodos));
 
   constructor(
     private store: Store<IAppState>,

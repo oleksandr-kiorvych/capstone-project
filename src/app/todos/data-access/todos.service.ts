@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment.development';
 export class TodosService {
   constructor(private http: HttpClient) {}
 
-  public getCurrentUserTodos(userId: number): Observable<ITodo[]> {
+  public getCurrentUserTodos(): Observable<ITodo[]> {
     return this.http.get<ITodo[]>(`${environment.LOCAL_URL}/todos`);
   }
 

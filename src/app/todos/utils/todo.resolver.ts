@@ -11,15 +11,8 @@ import { ITodo } from '../../shared/utils/models/todo.model';
 
 export const todoResolver: ResolveFn<ITodo[]> = (route, state) => {
   const store = inject(Store<IAppState>);
-  const router = inject(Router);
 
   const todoId = Number(route.params['todoId']);
-  const userData = decodeToken();
-
-  if (!userData) {
-    router.navigateByUrl('/auth');
-    return of([]);
-  }
 
   return store.pipe(
     select(selectCurrentTodos),

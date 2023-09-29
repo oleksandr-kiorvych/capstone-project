@@ -16,8 +16,8 @@ export class TodosEffect {
   getTodos$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(TodosActions.get_todos),
-      mergeMap(({ userId }) =>
-        this.todosService.getCurrentUserTodos(userId).pipe(
+      mergeMap(() =>
+        this.todosService.getCurrentUserTodos().pipe(
           map((todos) =>
             TodosActions.get_todos_success({
               todos,
