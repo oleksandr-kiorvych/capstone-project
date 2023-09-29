@@ -6,6 +6,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { Observable } from 'rxjs';
 import {
   FormBuilder,
   FormControl,
@@ -13,8 +15,11 @@ import {
   Validators,
 } from '@angular/forms';
 
-import { TodoFormType } from '../../utils/types/todo-form.type';
-import { ITodo, TAddTodoRequest } from '../../utils/models/todo.model';
+import { TodoFormType } from '../../../shared/utils/types/todo-form.type';
+import {
+  ITodo,
+  TAddTodoRequest,
+} from '../../../shared/utils/models/todo.model';
 
 @Component({
   selector: 'app-todo-form-modal',
@@ -35,7 +40,7 @@ import { ITodo, TAddTodoRequest } from '../../utils/models/todo.model';
 export class TodoFormModalComponent {
   public todoForm = this.fb.nonNullable.group({
     todo: ['', [Validators.required]],
-    completed: [null, Validators.required],
+    completed: [false, Validators.required],
   });
 
   public get todo() {
@@ -47,10 +52,24 @@ export class TodoFormModalComponent {
   }
 
   constructor(
-    private dialogRef: DialogRef<TAddTodoRequest>,
+    private dialogRef: DialogRef<Partial<ITodo>>,
     private fb: FormBuilder,
-    @Inject(DIALOG_DATA) public data: { type: TodoFormType }
-  ) {}
+    @Inject(DIALOG_DATA)
+    public data: {
+      type: TodoFormType;
+      todo$?: Observable<ITodo>;
+      todoId?: number;
+    }
+  ) {
+    if (this.data.todo$) {
+      this.data.todo$.pipe(takeUntilDestroyed()).subscribe((todo) => {
+        this.todoForm.patchValue({
+          completed: todo.completed,
+          todo: todo.todo,
+        });
+      });
+    }
+  }
 
   public discardDialog() {
     this.dialogRef.close();
@@ -62,6 +81,7 @@ export class TodoFormModalComponent {
     this.dialogRef.close({
       todo: this.todoForm.value.todo || '',
       completed: this.todoForm.value.completed || false,
+      id: this.data.todoId,
     });
   }
 }

@@ -18,7 +18,7 @@ export class TodosEffect {
       ofType(TodosActions.get_todos),
       mergeMap(({ userId }) =>
         this.todosService.getCurrentUserTodos(userId).pipe(
-          map(({ todos }) =>
+          map((todos) =>
             TodosActions.get_todos_success({
               todos,
             })
@@ -56,24 +56,36 @@ export class TodosEffect {
   addTodo$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(TodosActions.add_todo),
-      mergeMap(({ todo }) => {
-        return this.store.pipe(select(selectCurrentUser)).pipe(
-          switchMap((currentUser) =>
-            this.todosService
-              .addTodo({ ...todo, userId: currentUser?.id! })
-              .pipe(
-                map((todo) =>
-                  TodosActions.add_todo_success({
-                    todo,
-                  })
-                )
-              )
+      mergeMap(({ todo }) =>
+        this.todosService.addTodo(todo).pipe(
+          map((todo) =>
+            TodosActions.add_todo_success({
+              todo,
+            })
           ),
           catchError((errorRes: HttpErrorResponse) =>
             of(TodosActions.add_todo_error({ error: errorRes.error?.message }))
           )
-        );
-      })
+        )
+      )
+    );
+  });
+
+  editTodo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(TodosActions.edit_todo),
+      mergeMap(({ todo }) =>
+        this.todosService.editTodo(todo).pipe(
+          map((todo) =>
+            TodosActions.edit_todo_success({
+              todo,
+            })
+          ),
+          catchError((errorRes: HttpErrorResponse) =>
+            of(TodosActions.edit_todo_error({ error: errorRes.error?.message }))
+          )
+        )
+      )
     );
   });
 
@@ -82,9 +94,9 @@ export class TodosEffect {
       ofType(TodosActions.delete_todo),
       mergeMap(({ todoId }) =>
         this.todosService.deleteTodo(todoId).pipe(
-          map((todo) =>
+          map(() =>
             TodosActions.delete_todo_success({
-              todo,
+              todoId,
             })
           ),
           catchError((errorRes: HttpErrorResponse) =>

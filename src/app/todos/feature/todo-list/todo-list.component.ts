@@ -16,7 +16,7 @@ import {
   ITodo,
   TAddTodoRequest,
 } from '../../../shared/utils/models/todo.model';
-import { TodoFormModalComponent } from '../../../shared/ui/todo-form-modal/todo-form-modal.component';
+import { TodoFormModalComponent } from '../../ui/todo-form-modal/todo-form-modal.component';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,0 +1,30 @@
+{
+  "todos": [
+    {
+      "todo": "Do something nice for someone I care aboutads",
+      "completed": true,
+      "id": 1
+    },
+    {
+      "todo": "Memorize the fifty states and their capitals",
+      "completed": false,
+      "id": 2
+    },
+    {
+      "id": 3,
+      "todo": "Watch a classic movie",
+      "completed": false
+    },
+    {
+      "todo": "ojsojdfojsdfjons",
+      "completed": true,
+      "userId": 15,
+      "id": 5
+    },
+    {
+      "todo": "HEWOOO",
+      "completed": true,
+      "id": 6
+    }
+  ]
+}
