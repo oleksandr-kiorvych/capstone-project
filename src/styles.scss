@@ -1,5 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
+@use "@angular/material" as mat;
+@use "./styles/brand-palettes" as brand-palettes;
+@use "sass:map";
+
+@include mat.core();
+
+$brand-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette(brand-palettes.$brand-primary, 500),
+      accent: mat.define-palette(brand-palettes.$brand-accent),
+      warn: mat.define-palette(mat.$red-palette),
+    ),
+  )
+);
+
+$merged-brand-theme: map.deep-merge(
+  $brand-theme,
+  (
+    color: (),
+  )
+);
+
+@include mat.all-component-themes($merged-brand-theme);
+
 *,
 *::after,
 *::before {

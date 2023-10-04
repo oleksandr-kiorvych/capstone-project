@@ -1,24 +1,9 @@
 {
   "todos": [
     {
-      "todo": "AOJSndjonasd",
-      "completed": true,
+      "todo": "Edited todo",
+      "completed": false,
       "id": 1
-    },
-    {
-      "todo": "AK SDK AS DS",
-      "completed": true,
-      "id": 2
-    },
-    {
-      "todo": "KA SDASJDJASNDOASDOASODASKOD",
-      "completed": true,
-      "id": 3
-    },
-    {
-      "todo": "AKSJDJKASJDANSKDNASDASD",
-      "completed": true,
-      "id": 4
     },
     {
       "todo": "AKJSDKJASDKASDASDNAJNDKSNJAKSD",
@@ -29,6 +14,11 @@
       "todo": "asdlasndoadknas",
       "completed": false,
       "id": 6
+    },
+    {
+      "todo": "AOsndokaskoda",
+      "completed": true,
+      "id": 7
     }
   ]
 }
