@@ -16,21 +16,12 @@ export const todosReducer = createReducer(
     isLoading: true,
     error: null,
   })),
-  on(TodosActions.get_todos_success, (state, { todos }) => {
-    //keep added todos that are not saved to the server, API issue
-    const diff = state.todos.filter((stateTodo) => {
-      return !todos.some((serverTodo) => {
-        return stateTodo.id === serverTodo.id;
-      });
-    });
-
-    return {
-      ...state,
-      isLoading: false,
-      error: null,
-      todos: [...todos, ...diff],
-    };
-  }),
+  on(TodosActions.get_todos_success, (state, { todos }) => ({
+    ...state,
+    isLoading: false,
+    error: null,
+    todos: todos,
+  })),
   on(TodosActions.get_todos_error, (state, { error }) => ({
     ...state,
     error: error,
@@ -48,6 +39,12 @@ export const todosReducer = createReducer(
     error: null,
     todos: [...state.todos, todo],
   })),
+  on(TodosActions.add_todo_error, (state, { error }) => ({
+    ...state,
+    isLoading: false,
+    error: error,
+    todos: [],
+  })),
   on(TodosActions.edit_todo, (state) => ({
     ...state,
     isLoading: true,
@@ -62,11 +59,6 @@ export const todosReducer = createReducer(
         todo.id === curTodo.id ? todo : curTodo
       ),
     ],
-  })),
-  on(TodosActions.edit_todo_error, (state, { error }) => ({
-    ...state,
-    isLoading: false,
-    error: error,
   })),
   on(TodosActions.edit_todo_error, (state, { error }) => ({
     ...state,

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Store, StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { Router } from '@angular/router';
 
@@ -19,6 +19,7 @@ import { PersistanceService } from './shared/utils/services/persistance.service'
 import { todosReducer } from './todos/data-access/todo-store/todos.reducer';
 import { TodosEffect } from './todos/data-access/todo-store/todos.effects';
 import { authReducer } from './auth/data-access/store/auth.reducer';
+import { HeadersInterceptor } from './core/interceptor/headers.interceptors';
 
 @NgModule({
   declarations: [AppComponent],
@@ -39,6 +40,7 @@ import { authReducer } from './auth/data-access/store/auth.reducer';
       useFactory: initializeAppFactory,
       deps: [GetUserByIdService, PersistanceService, Router, Store],
     },
+    { provide: HTTP_INTERCEPTORS, useClass: HeadersInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
